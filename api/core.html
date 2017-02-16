@@ -952,12 +952,11 @@ less error-prone if they are simply passed through when the events occur.
     <table class="docs-api-method-table">
   <thead>
     <tr class="docs-api-method-name-row">
-      <th colspan="2" class="docs-api-method-name-cell">registerElementForFocusClasses</th>
+      <th colspan="2" class="docs-api-method-name-cell">monitor</th>
     </tr>
   </thead>
   <tr class="docs-api-method-description-row">
-    <td colspan="2" class="docs-api-method-description-cell">Register an element to receive focus classes.
-</td>
+    <td colspan="2" class="docs-api-method-description-cell">Monitors focus on an element and applies appropriate CSS classes.</td>
   </tr><thead>
     <tr class="docs-api-method-parameters-header-row">
       <th colspan="2" class="docs-api-method-parameters-header-cell">Parameters</th>
@@ -971,7 +970,7 @@ less error-prone if they are simply passed through when the events occur.
       <code class="docs-api-method-parameter-type">Element</code>
     </td>
     <td class="docs-api-method-parameter-description-cell">
-      <p class="docs-api-method-parameter-description"></p>
+      <p class="docs-api-method-parameter-description">The element to monitor</p>
     </td>
   </tr>
   
@@ -982,7 +981,18 @@ less error-prone if they are simply passed through when the events occur.
       <code class="docs-api-method-parameter-type">Renderer</code>
     </td>
     <td class="docs-api-method-parameter-description-cell">
-      <p class="docs-api-method-parameter-description"></p>
+      <p class="docs-api-method-parameter-description">The renderer to use to apply CSS classes to the element.</p>
+    </td>
+  </tr>
+  
+  <tr class="docs-api-method-parameter-row">
+    <td class="docs-api-method-parameter-cell">
+      <p class="docs-api-method-parameter-name">
+        checkChildren</p>
+      <code class="docs-api-method-parameter-type">boolean</code>
+    </td>
+    <td class="docs-api-method-parameter-description-cell">
+      <p class="docs-api-method-parameter-description">Whether to count the element as focused when its children are focused.</p>
     </td>
   </tr>
   <thead>
@@ -995,9 +1005,40 @@ less error-prone if they are simply passed through when the events occur.
       <code class="docs-api-method-returns-type">Observable&lt;FocusOrigin&gt;</code>
     </td>
     <td class="docs-api-method-returns-description-cell">
-      <p class="docs-api-method-returns-description"></p>
+      <p class="docs-api-method-returns-description">An observable that emits when the focus state of the element changes.
+    When the element is blurred, null will be emitted.
+</p>
     </td>
   </tr></table>
+
+
+  
+    <table class="docs-api-method-table">
+  <thead>
+    <tr class="docs-api-method-name-row">
+      <th colspan="2" class="docs-api-method-name-cell">unmonitor</th>
+    </tr>
+  </thead>
+  <tr class="docs-api-method-description-row">
+    <td colspan="2" class="docs-api-method-description-cell">Stops monitoring an element and removes all focus classes.</td>
+  </tr><thead>
+    <tr class="docs-api-method-parameters-header-row">
+      <th colspan="2" class="docs-api-method-parameters-header-cell">Parameters</th>
+    </tr>
+  </thead>
+  
+  <tr class="docs-api-method-parameter-row">
+    <td class="docs-api-method-parameter-cell">
+      <p class="docs-api-method-parameter-name">
+        element</p>
+      <code class="docs-api-method-parameter-type">Element</code>
+    </td>
+    <td class="docs-api-method-parameter-description-cell">
+      <p class="docs-api-method-parameter-description">The element to stop monitoring.
+</p>
+    </td>
+  </tr>
+  </table>
 
 
   
@@ -1008,8 +1049,7 @@ less error-prone if they are simply passed through when the events occur.
     </tr>
   </thead>
   <tr class="docs-api-method-description-row">
-    <td colspan="2" class="docs-api-method-description-cell">Focuses the element via the specified focus origin.
-</td>
+    <td colspan="2" class="docs-api-method-description-cell">Focuses the element via the specified focus origin.</td>
   </tr><thead>
     <tr class="docs-api-method-parameters-header-row">
       <th colspan="2" class="docs-api-method-parameters-header-cell">Parameters</th>
@@ -1023,7 +1063,7 @@ less error-prone if they are simply passed through when the events occur.
       <code class="docs-api-method-parameter-type">Node</code>
     </td>
     <td class="docs-api-method-parameter-description-cell">
-      <p class="docs-api-method-parameter-description"></p>
+      <p class="docs-api-method-parameter-description">The element to focus.</p>
     </td>
   </tr>
   
@@ -1034,7 +1074,7 @@ less error-prone if they are simply passed through when the events occur.
       <code class="docs-api-method-parameter-type">Renderer</code>
     </td>
     <td class="docs-api-method-parameter-description-cell">
-      <p class="docs-api-method-parameter-description"></p>
+      <p class="docs-api-method-parameter-description">The renderer to use to invoke the focus method on the element.</p>
     </td>
   </tr>
   
@@ -1045,7 +1085,8 @@ less error-prone if they are simply passed through when the events occur.
       <code class="docs-api-method-parameter-type">FocusOrigin</code>
     </td>
     <td class="docs-api-method-parameter-description-cell">
-      <p class="docs-api-method-parameter-description"></p>
+      <p class="docs-api-method-parameter-description">The focus origin.
+</p>
     </td>
   </tr>
   </table>
@@ -1990,9 +2031,14 @@ counted by checking the query list&#39;s length.
 
 
   
-    <h3 class="docs-api-h3 docs-api-class-name">CdkFocusClasses</h3>
-<p class="docs-api-class-description">Directive that determines how a particular element was focused (via keyboard, mouse, or
+    <h3 class="docs-api-h3 docs-api-class-name">CdkMonitorFocus</h3>
+<p class="docs-api-class-description">Directive that determines how a particular element was focused (via keyboard, mouse, touch, or
 programmatically) and adds corresponding classes to the element.
+
+There are two variants of this directive:
+1) cdkMonitorElementFocus: does not consider an element to be focused if one of its children is
+   focused.
+2) cdkMonitorSubtreeFocus: considers an element focused if it or any of its children are focused.
 </p><h4 class="docs-api-h4 docs-api-method-header">Properties</h4>
   <table class="docs-api-properties-table">
     <tr class="docs-api-properties-header-row">
@@ -2001,8 +2047,9 @@ programmatically) and adds corresponding classes to the element.
     </tr>
     
       <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property-name">
-      changes
+  <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker">
+          @Output()</div><p class="docs-api-property-name">
+      cdkFocusChange
     </p>
     <code class="docs-api-property-type"></code>
   </td>
