@@ -39,6 +39,10 @@
   DialogResultExampleDialog,
   DialogResultExample
 } from <span class="hljs-string">'./dialog-result/dialog-result-example'</span>;
+<span class="hljs-keyword">import</span> {
+  DialogElementsExampleDialog,
+  DialogElementsExample
+} from <span class="hljs-string">'./dialog-elements/dialog-elements-example'</span>;
 <span class="hljs-keyword">import</span> {TooltipOverviewExample} from <span class="hljs-string">'./tooltip-overview/tooltip-overview-example'</span>;
 <span class="hljs-keyword">import</span> {ButtonToggleOverviewExample} from <span class="hljs-string">'./button-toggle-overview/button-toggle-overview-example'</span>;
 <span class="hljs-keyword">import</span> {GridListOverviewExample} from <span class="hljs-string">'./grid-list-overview/grid-list-overview-example'</span>;
@@ -100,10 +104,16 @@
     selectorName: <span class="hljs-string">'DialogOverviewExample, DialogOverviewExampleDialog'</span>,
   },
   <span class="hljs-string">'dialog-result'</span>: {
-    title: <span class="hljs-string">'Dailog with a result'</span>,
+    title: <span class="hljs-string">'Dialog with a result'</span>,
     component: DialogResultExample,
     additionalFiles: [<span class="hljs-string">'dialog-result-example-dialog.html'</span>],
     selectorName: <span class="hljs-string">'DialogResultExample, DialogResultExampleDialog'</span>,
+  },
+  <span class="hljs-string">'dialog-elements'</span>: {
+    title: <span class="hljs-string">'Dialog elements'</span>,
+    component: DialogElementsExample,
+    additionalFiles: [<span class="hljs-string">'dialog-elements-example-dialog.html'</span>],
+    selectorName: <span class="hljs-string">'DialogElementsExample, DialogElementsExampleDialog'</span>,
   },
   <span class="hljs-string">'grid-list-dynamic'</span>: {title: <span class="hljs-string">'Dynamic grid-list'</span>, component: GridListDynamicExample},
   <span class="hljs-string">'grid-list-overview'</span>: {title: <span class="hljs-string">'Basic grid-list'</span>, component: GridListOverviewExample},
@@ -173,6 +183,8 @@
   DialogOverviewExampleDialog,
   DialogResultExample,
   DialogResultExampleDialog,
+  DialogElementsExample,
+  DialogElementsExampleDialog,
   GridListDynamicExample,
   GridListOverviewExample,
   IconOverviewExample,
