@@ -31,21 +31,6 @@ in your <code>styles.css</code>  file:</p>
 <p>Finally, if your app&#39;s content <strong>is not</strong> placed inside of a <code>md-sidenav-container</code> element, you
 need to add the <code>mat-app-background</code> class to your wrapper element (for example the <code>body</code>). This
 ensures that the proper theme background is applied to your page.</p>
-<h4 id="theming-overlay-based-components">Theming overlay-based components</h4>
-<p>Since certain components (e.g. <code>dialog</code>) are inside of a global overlay container, your theme may
-not be applied to them. In order to define the theme that will be used for overlay components, you
-have to specify it on the global <code>OverlayContainer</code> instance:</p>
-<pre><code class="lang-ts"><span class="hljs-keyword">import</span> {OverlayContainer} from <span class="hljs-string">'@angular/material'</span>;
-
-<span class="hljs-meta">@NgModule</span>({
-  <span class="hljs-comment">// misc config goes here</span>
-})
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> YourAppModule {
-  <span class="hljs-keyword">constructor</span>(<span class="hljs-params">overlayContainer: OverlayContainer</span>) {
-    overlayContainer.themeClass = <span class="hljs-string">'your-theme'</span>;
-  }
-}
-</code></pre>
 <h3 id="defining-a-custom-theme">Defining a custom theme</h3>
 <p>When you want more customization than a pre-built theme offers, you can create your own theme file.</p>
 <p>A theme file is a simple Sass file that defines your palettes and passes them to mixins that output
