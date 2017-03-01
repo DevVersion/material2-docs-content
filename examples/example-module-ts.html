@@ -1,7 +1,8 @@
 <span class="hljs-keyword">import</span> {NgModule} from <span class="hljs-string">'@angular/core'</span>;
-<span class="hljs-keyword">import</span> {FormsModule} from <span class="hljs-string">'@angular/forms'</span>;
+<span class="hljs-keyword">import</span> {FormsModule, ReactiveFormsModule} from <span class="hljs-string">'@angular/forms'</span>;
 <span class="hljs-keyword">import</span> {CommonModule} from <span class="hljs-string">'@angular/common'</span>;
 <span class="hljs-keyword">import</span> {MaterialModule} from <span class="hljs-string">'@angular/material'</span>;
+<span class="hljs-keyword">import</span> {AutocompleteOverviewExample} from <span class="hljs-string">'./autocomplete-overview/autocomplete-overview-example'</span>;
 <span class="hljs-keyword">import</span> {ButtonOverviewExample} from <span class="hljs-string">'./button-overview/button-overview-example'</span>;
 <span class="hljs-keyword">import</span> {ButtonTypesExample} from <span class="hljs-string">'./button-types/button-types-example'</span>;
 <span class="hljs-keyword">import</span> {CheckboxOverviewExample} from <span class="hljs-string">'./checkbox-overview/checkbox-overview-example'</span>;
@@ -84,6 +85,7 @@
  * Value is the component.
  */</span>
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> EXAMPLE_COMPONENTS = {
+  <span class="hljs-string">'autocomplete-overview'</span>: {title: <span class="hljs-string">'Basic autocomplete'</span>, component: AutocompleteOverviewExample},
   <span class="hljs-string">'button-overview'</span>: {title: <span class="hljs-string">'Basic buttons'</span>, component: ButtonOverviewExample},
   <span class="hljs-string">'button-types'</span>: {title: <span class="hljs-string">'Button varieties'</span>, component: ButtonTypesExample},
   <span class="hljs-string">'button-toggle-exclusive'</span>: {
@@ -169,6 +171,7 @@
  * We need to put them in both `declarations` and `entryComponents` to make them work.
  */</span>
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> EXAMPLE_LIST = [
+  AutocompleteOverviewExample,
   ButtonOverviewExample,
   ButtonToggleExclusiveExample,
   ButtonToggleOverviewExample,
@@ -226,6 +229,7 @@
   imports: [
     MaterialModule,
     FormsModule,
+    ReactiveFormsModule,
     CommonModule,
   ]
 })
