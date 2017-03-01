@@ -51,3 +51,29 @@ value is forwarded as the result of the <code>afterClosed</code> promise. </p>
 <p>You can control which elements are tab stops with the <code>tabindex</code> attribute</p>
 <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">md-button</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">"-1"</span>&gt;</span>Not Tabbable<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
 </code></pre>
+<h3 id="aot-compilation">AOT Compilation</h3>
+<p>Due to the dynamic nature of the <code>MdDialog</code>, and its usage of <code>ViewContainerRef#createComponent()</code>
+to create the component on the fly, the AOT compiler will not know to create the proper
+<code>ComponentFactory</code> for your dialog component by default.</p>
+<p>You must include your dialog class in the list of <code>entryComponents</code> in your module definition so
+that the AOT compiler knows to create the <code>ComponentFactory</code> for it.</p>
+<pre><code class="lang-ts"><span class="hljs-meta">@NgModule</span>({
+  imports: [
+    <span class="hljs-comment">// ...</span>
+    MaterialModule
+  ],
+
+  declarations: [
+    AppComponent,
+    ExampleDialogComponent
+  ],
+
+  entryComponents: [
+    ExampleDialogComponent
+  ]
+
+  providers: [],
+  bootstrap: [AppComponent]
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> AppModule() {}
+</code></pre>
