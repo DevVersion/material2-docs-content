@@ -1771,6 +1771,119 @@ ConnectedPositionStrategy.
 
 
   
+    <h3 class="docs-api-h3 docs-api-class-name">FocusTrap</h3>
+<p class="docs-api-class-description">Directive for trapping focus within a region.
+
+NOTE: This directive currently uses a very simple (naive) approach to focus trapping.
+It assumes that the tab order is the same as DOM order, which is not necessarily true.
+Things like tabIndex &gt; 0, flex `order`, and shadow roots can cause to two to misalign.
+This will be replaced with a more intelligent solution before the library is considered stable.
+</p><h4 class="docs-api-h4 docs-api-method-header">Properties</h4>
+  <table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+      <th class="docs-api-properties-th">Name</th>
+      <th class="docs-api-properties-th">Description</th>
+    </tr>
+    
+      <tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property-name">
+      trappedContent
+    </p>
+    <code class="docs-api-property-type"></code>
+  </td>
+  <td class="docs-api-property-description"></td>
+</tr>
+
+
+    
+      <tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          @Input()</div><p class="docs-api-property-name">
+      disabled
+    </p>
+    <code class="docs-api-property-type"></code>
+  </td>
+  <td class="docs-api-property-description">Whether the focus trap is active.
+</td>
+</tr>
+
+
+    
+  </table>
+
+
+<h4 class="docs-api-h4 docs-api-method-header">Methods</h4>
+  
+    <table class="docs-api-method-table">
+  <thead>
+    <tr class="docs-api-method-name-row">
+      <th colspan="2" class="docs-api-method-name-cell">focusFirstTabbableElementWhenReady</th>
+    </tr>
+  </thead>
+  <tr class="docs-api-method-description-row">
+    <td colspan="2" class="docs-api-method-description-cell">Waits for microtask queue to empty, then focuses the first tabbable element within the focus
+trap region.
+</td>
+  </tr></table>
+
+
+  
+    <table class="docs-api-method-table">
+  <thead>
+    <tr class="docs-api-method-name-row">
+      <th colspan="2" class="docs-api-method-name-cell">focusLastTabbableElementWhenReady</th>
+    </tr>
+  </thead>
+  <tr class="docs-api-method-description-row">
+    <td colspan="2" class="docs-api-method-description-cell">Waits for microtask queue to empty, then focuses the last tabbable element within the focus
+trap region.
+</td>
+  </tr></table>
+
+
+  
+    <table class="docs-api-method-table">
+  <thead>
+    <tr class="docs-api-method-name-row">
+      <th colspan="2" class="docs-api-method-name-cell">focusFirstTabbableElement</th>
+    </tr>
+  </thead>
+  <tr class="docs-api-method-description-row">
+    <td colspan="2" class="docs-api-method-description-cell">Focuses the first tabbable element within the focus trap region.
+</td>
+  </tr></table>
+
+
+  
+    <table class="docs-api-method-table">
+  <thead>
+    <tr class="docs-api-method-name-row">
+      <th colspan="2" class="docs-api-method-name-cell">focusLastTabbableElement</th>
+    </tr>
+  </thead>
+  <tr class="docs-api-method-description-row">
+    <td colspan="2" class="docs-api-method-description-cell">Focuses the last tabbable element within the focus trap region.
+</td>
+  </tr></table>
+
+
+  
+
+
+
+  
+    <h3 class="docs-api-h3 docs-api-class-name">MdLine</h3>
+<p class="docs-api-class-description">Shared directive to count lines inside a text area, such as a list item.
+Line elements can be extracted with a @ContentChildren(MdLine) query, then
+counted by checking the query list&#39;s length.
+</p>
+
+
+
+
+
+
+  
     <h3 class="docs-api-h3 docs-api-class-name">MdRipple</h3>
 <p class="docs-api-class-description"></p><span class="docs-api-h4 docs-api-class-export-label">Exported as:</span>
 <span class="docs-api-class-export-name">mdRipple</span><h4 class="docs-api-h4 docs-api-method-header">Properties</h4>
@@ -1942,67 +2055,18 @@ A changed speedFactor will not modify the fade-out duration of the ripples.
       <p class="docs-api-method-parameter-description"></p>
     </td>
   </tr>
-  </table>
-
-
-  
-
-
-
-  
-    <h3 class="docs-api-h3 docs-api-class-name">FocusTrap</h3>
-<p class="docs-api-class-description">Directive for trapping focus within a region.
-
-NOTE: This directive currently uses a very simple (naive) approach to focus trapping.
-It assumes that the tab order is the same as DOM order, which is not necessarily true.
-Things like tabIndex &gt; 0, flex `order`, and shadow roots can cause to two to misalign.
-This will be replaced with a more intelligent solution before the library is considered stable.
-</p><h4 class="docs-api-h4 docs-api-method-header">Properties</h4>
-  <table class="docs-api-properties-table">
-    <tr class="docs-api-properties-header-row">
-      <th class="docs-api-properties-th">Name</th>
-      <th class="docs-api-properties-th">Description</th>
-    </tr>
-    
-      <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property-name">
-      trappedContent
-    </p>
-    <code class="docs-api-property-type"></code>
-  </td>
-  <td class="docs-api-property-description"></td>
-</tr>
-
-
-    
-      <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-          @Input()</div><p class="docs-api-property-name">
-      disabled
-    </p>
-    <code class="docs-api-property-type"></code>
-  </td>
-  <td class="docs-api-property-description">Whether the focus trap is active.
-</td>
-</tr>
-
-
-    
-  </table>
-
-
-<h4 class="docs-api-h4 docs-api-method-header">Methods</h4>
-  
-    <table class="docs-api-method-table">
   <thead>
-    <tr class="docs-api-method-name-row">
-      <th colspan="2" class="docs-api-method-name-cell">focusFirstTabbableElementWhenReady</th>
+    <tr class="docs-api-method-returns-header-row">
+      <th colspan="2" class="docs-api-method-returns-header-cell">Returns</th>
     </tr>
   </thead>
-  <tr class="docs-api-method-description-row">
-    <td colspan="2" class="docs-api-method-description-cell">Waits for microtask queue to empty, then focuses the first tabbable element within the focus
-trap region.
-</td>
+  <tr>
+    <td class="docs-api-method-returns-type-cell">
+      <code class="docs-api-method-returns-type">RippleRef</code>
+    </td>
+    <td class="docs-api-method-returns-description-cell">
+      <p class="docs-api-method-returns-description"></p>
+    </td>
   </tr></table>
 
 
@@ -2010,55 +2074,16 @@ trap region.
     <table class="docs-api-method-table">
   <thead>
     <tr class="docs-api-method-name-row">
-      <th colspan="2" class="docs-api-method-name-cell">focusLastTabbableElementWhenReady</th>
+      <th colspan="2" class="docs-api-method-name-cell">fadeOutAll</th>
     </tr>
   </thead>
   <tr class="docs-api-method-description-row">
-    <td colspan="2" class="docs-api-method-description-cell">Waits for microtask queue to empty, then focuses the last tabbable element within the focus
-trap region.
+    <td colspan="2" class="docs-api-method-description-cell">Fades out all currently showing ripple elements.
 </td>
   </tr></table>
 
 
   
-    <table class="docs-api-method-table">
-  <thead>
-    <tr class="docs-api-method-name-row">
-      <th colspan="2" class="docs-api-method-name-cell">focusFirstTabbableElement</th>
-    </tr>
-  </thead>
-  <tr class="docs-api-method-description-row">
-    <td colspan="2" class="docs-api-method-description-cell">Focuses the first tabbable element within the focus trap region.
-</td>
-  </tr></table>
-
-
-  
-    <table class="docs-api-method-table">
-  <thead>
-    <tr class="docs-api-method-name-row">
-      <th colspan="2" class="docs-api-method-name-cell">focusLastTabbableElement</th>
-    </tr>
-  </thead>
-  <tr class="docs-api-method-description-row">
-    <td colspan="2" class="docs-api-method-description-cell">Focuses the last tabbable element within the focus trap region.
-</td>
-  </tr></table>
-
-
-  
-
-
-
-  
-    <h3 class="docs-api-h3 docs-api-class-name">MdLine</h3>
-<p class="docs-api-class-description">Shared directive to count lines inside a text area, such as a list item.
-Line elements can be extracted with a @ContentChildren(MdLine) query, then
-counted by checking the query list&#39;s length.
-</p>
-
-
-
 
 
 
@@ -3520,6 +3545,59 @@ rectangle and any one of the strategy&#39;s Scrollable&#39;s bounding client rec
 
 
 
+
+
+
+  
+    <h3 class="docs-api-h3 docs-api-class-name">RippleRef</h3>
+<p class="docs-api-class-description">Reference to a previously launched ripple element.
+</p><h4 class="docs-api-h4 docs-api-method-header">Properties</h4>
+  <table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+      <th class="docs-api-properties-th">Name</th>
+      <th class="docs-api-properties-th">Description</th>
+    </tr>
+    
+      <tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property-name">
+      element
+    </p>
+    <code class="docs-api-property-type"></code>
+  </td>
+  <td class="docs-api-property-description"></td>
+</tr>
+
+
+    
+      <tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property-name">
+      config
+    </p>
+    <code class="docs-api-property-type"></code>
+  </td>
+  <td class="docs-api-property-description"></td>
+</tr>
+
+
+    
+  </table>
+
+
+<h4 class="docs-api-h4 docs-api-method-header">Methods</h4>
+  
+    <table class="docs-api-method-table">
+  <thead>
+    <tr class="docs-api-method-name-row">
+      <th colspan="2" class="docs-api-method-name-cell">fadeOut</th>
+    </tr>
+  </thead>
+  <tr class="docs-api-method-description-row">
+    <td colspan="2" class="docs-api-method-description-cell">Fades out the ripple element.
+</td>
+  </tr></table>
+
+
+  
 
 
 
