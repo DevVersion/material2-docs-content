@@ -34,13 +34,16 @@ local template variable (here we called it &quot;auto&quot;), and binding that v
 <h3 id="adding-a-custom-filter">Adding a custom filter</h3>
 <p>At this point, the autocomplete panel should be toggleable on focus and options should be selectable. But if we want 
 our options to filter when we type, we need to add a custom filter. </p>
-<p>You can filter the options in any way you want based on the text input. Here we will do a simple string test on the 
-input value to see if it matches the option value. We already have access to the built-in <code>valueChanges</code> observable on 
-the <code>FormControl</code>, so we can simply map the text input&#39;s values to the suggested options by passing them through this 
-filter. The resulting observable (<code>filteredOptions</code>) can be added to the template in place of the <code>options</code> property 
-using the <code>async</code> pipe.</p>
+<p>You can filter the options in any way you like based on the text input*. Here we will perform a simple string test on 
+the option value to see if it matches the input value, starting from the option&#39;s first letter. We already have access 
+to the built-in <code>valueChanges</code> observable on the <code>FormControl</code>, so we can simply map the text input&#39;s values to the 
+suggested options by passing them through this filter. The resulting observable (<code>filteredOptions</code>) can be added to the 
+template in place of the <code>options</code> property using the <code>async</code> pipe.</p>
 <p>Below we are also priming our value change stream with <code>null</code> so that the options are filtered by that value on init 
 (before there are any value changes).</p>
+<p>*For optimal accessibility, you may want to consider adding text guidance on the page to explain filter criteria. 
+This is especially helpful for screenreader users if you&#39;re using a non-standard filter that doesn&#39;t limit matches 
+to the beginning of the string.</p>
 <p><em>my-comp.ts</em></p>
 <pre><code class="lang-ts"><span class="hljs-keyword">class</span> MyComp {
    myControl = <span class="hljs-keyword">new</span> FormControl();
@@ -58,7 +61,7 @@ using the <code>async</code> pipe.</p>
    }
 
    filter(val: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">string</span>[] {
-      <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.options.filter(option =&gt; <span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(val, <span class="hljs-string">'gi'</span>).test(option)); 
+      <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.options.filter(option =&gt; <span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(<span class="hljs-string">`^<span class="hljs-subst">${val}</span>`</span>, <span class="hljs-string">'gi'</span>).test(option)); 
    }
 }
 </code></pre>
@@ -108,7 +111,7 @@ Then bind it to the autocomplete&#39;s <code>displayWith</code> property. </p>
    }
 
    filter(name: <span class="hljs-built_in">string</span>): User[] {
-      <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.options.filter(option =&gt; <span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(name, <span class="hljs-string">'gi'</span>).test(option)); 
+      <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.options.filter(option =&gt; <span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(<span class="hljs-string">`^<span class="hljs-subst">${name}</span>`</span>, <span class="hljs-string">'gi'</span>).test(option)); 
    }
 
    displayFn(user: User): <span class="hljs-built_in">string</span> {
