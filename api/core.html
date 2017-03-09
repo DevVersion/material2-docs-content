@@ -292,7 +292,7 @@ scrollable is scrolled, the service emits the event in its scrolled observable.<
     </tr>
   </thead>
   <tr class="docs-api-method-description-row">
-    <td colspan="2" class="docs-api-method-description-cell">Returns an observable that emits an event whenever any of the registered Scrollable
+    <td colspan="2" class="docs-api-method-description-cell">Subscribes to an observable that emits an event whenever any of the registered Scrollable
 references (or window, document, or body) fire a scrolled event. Can provide a time in ms
 to override the default &quot;throttle&quot; time.
 </td>
@@ -312,6 +312,17 @@ to override the default &quot;throttle&quot; time.
       <p class="docs-api-method-parameter-description"></p>
     </td>
   </tr>
+  
+  <tr class="docs-api-method-parameter-row">
+    <td class="docs-api-method-parameter-cell">
+      <p class="docs-api-method-parameter-name">
+        callback</p>
+      <code class="docs-api-method-parameter-type">() =&gt; any</code>
+    </td>
+    <td class="docs-api-method-parameter-description-cell">
+      <p class="docs-api-method-parameter-description"></p>
+    </td>
+  </tr>
   <thead>
     <tr class="docs-api-method-returns-header-row">
       <th colspan="2" class="docs-api-method-returns-header-cell">Returns</th>
@@ -319,7 +330,7 @@ to override the default &quot;throttle&quot; time.
   </thead>
   <tr>
     <td class="docs-api-method-returns-type-cell">
-      <code class="docs-api-method-returns-type">Observable&lt;void&gt;</code>
+      <code class="docs-api-method-returns-type">Subscription</code>
     </td>
     <td class="docs-api-method-returns-description-cell">
       <p class="docs-api-method-returns-description"></p>
